@@ -124,6 +124,7 @@ in {
                   User = serviceName;
                   StateDirectory = serviceName;
                   ExecStart = "${cfg.package}/bin/geth ${scriptArgs}";
+                  ReadWritePaths = [cfg.args.datadir];
                 }
                 (mkIf (cfg.args.authrpc.jwtsecret != null) {
                   LoadCredential = ["jwtsecret:${cfg.args.authrpc.jwtsecret}"];

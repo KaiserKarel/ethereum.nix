@@ -114,6 +114,7 @@ in {
                   StateDirectory = serviceName;
                   ExecStart = "${cfg.package}/bin/beacon-chain ${scriptArgs}";
                   MemoryDenyWriteExecute = "false"; # causes a library loading error
+                  ReadWritePaths = [cfg.args.datadir];
                 }
                 (mkIf (cfg.args.jwt-secret != null) {
                   LoadCredential = ["jwt-secret:${cfg.args.jwt-secret}"];
